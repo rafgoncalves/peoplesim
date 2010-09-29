@@ -10,6 +10,7 @@
 #TODO: Implement the GRID object for rooms.
 #TODO: Implement TAGS for motivation
 #TODO: Implement Facts concept (something that trigers methods like actor.die())
+#TODO: COnfigure SVN branches and trunk
 
 # This is a sandbox implementation, please avoid asking about comments. :)
 
