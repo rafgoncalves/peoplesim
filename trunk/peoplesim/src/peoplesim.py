@@ -1,0 +1,9 @@
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+
+__author__="Rafael"
+__date__ ="$Sep 28, 2010 11:14:45 PM$"
+
+if __name__ == "__main__":
+    print "Hello World"
+
