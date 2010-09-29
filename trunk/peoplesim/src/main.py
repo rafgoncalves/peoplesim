@@ -10,7 +10,6 @@
 #TODO: Implement the GRID object for rooms.
 #TODO: Implement TAGS for motivation
 #TODO: Implement Facts concept (something that trigers methods like actor.die())
-#TODO: COnfigure SVN branches and trunk (S)
 
 # This is a sandbox implementation, please avoid asking about comments. :)
 
@@ -289,7 +288,7 @@ class Room(Element):
         self.room = self
         self.actors = {}
         self.objects = {}
-        self.passage = {}
+        self.passages = {}
 
     def _addElement(self, element, collection):
         if element not in collection:
