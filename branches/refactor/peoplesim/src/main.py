@@ -289,7 +289,7 @@ class Room(Element):
         self.room = self
         self.actors = {}
         self.objects = {}
-        self.passage = {}
+        self.passages = {}
 
     def _addElement(self, element, collection):
         if element not in collection:
