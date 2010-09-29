@@ -1,3 +1,4 @@
+#TODO: Refactoring, build the structure tree and populate.
 #TODO: Implement expected value based decisions.
 #TODO: Implement cross reference so if we add an object to a room, the object
 #      knows where it's.
