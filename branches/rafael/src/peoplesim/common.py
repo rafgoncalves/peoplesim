@@ -1,15 +1,20 @@
 from collections import deque
 
 class ActionQueue(deque):
-    def __str__(self):
+    """Implements a special type of Queue where actions are appended considering
+    it's lengths.
+
+    Public methods:
+    human_readable(): Returns a human-readable string for the queue.
+    """
+    def humanReadable(self):
         string = ""
         for action in self:
             string = ''.join((string, action.name, " > "))
         return string[:len(string)-2]
 
     def append(self, action):
-        for i in range(0, action.length):
-            super().append(action)
+        super().extend(list(action for i in range(0, action.length)))
 
 class Attribute:
     def __init__(self, name, max, value, decr):
@@ -21,7 +26,7 @@ class Attribute:
     def update(self):
         self.value *= self.decr
 
-    def __str__(self):
+    def humanReadable(self):
         return ''.join((self.name,": ", str(self.value)));
 
 class Element:

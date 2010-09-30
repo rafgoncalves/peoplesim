@@ -1,10 +1,38 @@
+#TODO: Rule based decisions
+#TODO: Reimplement the motivation function. It's currently wrong for length > 1.
+#TODO: Implement expected value based decisions.
+#TODO: Implement a "test" action that allows the actor to know the object.
+#TODO: Implement TAGS for motivation
+
 from math import copysign
 
 from peoplesim.actions import *
 from peoplesim.common import *
 
 class Actor(Element):
+    """Instances of this class and subclasses represents persons.
+
+    There are currently only two public methods for an Actor object:
+
+        update(): This shall be called at ever new tick and manages all the
+        internal states and processes of the actor.
+
+        printStatus(bool queue): Prints actor info in human-readable form.
+
+    The system is designed in such a way that some protected methods may be
+    overloaded in child classes to represent a different personality stereotype.
+    These are:
+
+        _analyseQueue(): Analyses the actual actions queue and decides if it
+        should be modified.
+
+        _motivationFunction(obj action): Calculates a motivation score for a
+        given action.
+
+        _setDefault(): Adds the basic attributes and actions to an Actor.
+    """
     def __init__(self, name):
+        """Class constructor. Ensures everthing gets initialized."""
         super().__init__(name)
         self.attributes = {}
         self._setDefault()
@@ -12,6 +40,7 @@ class Actor(Element):
         self._current_action = None
 
     def _setDefault(self):
+        """Adds the basic attributes and actions to an Actor."""
         self._addAttribute(Attribute("energy", 100, 50, .98))
         self._addAttribute(Attribute("social", 100, 50, .9))
         self._addAttribute(Attribute("culture", 100, 50, .9))
@@ -25,7 +54,7 @@ class Actor(Element):
             raise NameError(''.join(("The attribute ", attr.name, " is already set.")))
 
     def _chooseAction(self):
-        """ Returns the actor's next action.
+        """Returns the actor's next action.
 
         This iterates over all _listPossibleActions(self.introspection) results,
         calculating the _finessFunction(action) for each and returning the best
@@ -111,20 +140,32 @@ class Actor(Element):
         self._current_action.execute(self)
 
     def _analyseQueue(self):
+        """Analyses the current ActionQueue and decides upon it shall be
+        reviewed.
+
+        This method may be overriden in the child classes to create different
+        personalites.
+        """
         # If there is no actions in the queue, schedule new ones
-          if len(self._action_queue) == 0:
+        if len(self._action_queue) == 0:
             self._action_queue.append(self._chooseAction())
 
-    def printStatus(self):
-        """ Prints the actor status in a human-readable form."""
+    def printStatus(self, queue = True):
+        """Prints the actor status in a human-readable form.
+
+        Keyword arguments:
+        queue -- defines if the ActionQueue is printed. (default True)
+        """
         print("------------------")
         print("Actor: %s" % self.name)
-        for attribute, value in self._attributesCurrent().items():
-            print(" + %s: %f" % (attribute, value))
+        for attribute in self.attributes.values():
+            print(" + %s" % attribute.humanReadable())
 
         if self._current_action is not None:
             print(" - Action: %s" % self._current_action.name)
-        if len(self._action_queue) > 0:
-            print(" - Queue: %s" % self._action_queue)
-        else:
-            print(" - Queue: <Empty>")
+
+        if queue:
+            if len(self._action_queue) > 0:
+                print(" - Queue: %s" % self._action_queue.humanReadable())
+            else:
+                print(" - Queue: <Empty>")
