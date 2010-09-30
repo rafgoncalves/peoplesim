@@ -1,13 +1,8 @@
-#TODO: Implement expected value based decisions.
 #TODO: Implement cross reference so if we add an object to a room, the object
 #      knows where it's.
-#TODO: Implement a "test" action that allows the actor to know the object.
 #TODO: Implement multiple ticks actions. (Partialy done)
-#TODO: Implement the rule based system for actors.
 #TODO: Implement the GRID object for rooms.
-#TODO: Implement TAGS for motivation
 #TODO: Implement Events concept (something that trigers methods like actor.die())
-#TODO: Reimplement the motivation function. It's currently wrong for length > 1.
 
 # This is a sandbox implementation, please avoid asking about comments. :)
 
@@ -52,18 +47,6 @@ if __name__ == "__main__":
         Bob.printStatus()
         Bob.update()
 
-        Alice.printStatus()
-        Alice.update()
-
-if __name__ == "!__main__":
-    Bob = Actor("Bob")
-    Bob.introspection = 2
-    Phone = Phone()
-
-    Lounge = Room("Lounge")
-    Lounge.addActor(Bob)
-    Lounge.addObject(Phone)
-
-    Bob.printStatus()
-    Bob.update()
+        #Alice.printStatus()
+        #Alice.update()
 
