@@ -42,7 +42,7 @@ class Actor(Element):
     def _setDefault(self):
         """Adds the basic attributes and actions to an Actor."""
         self._addAttribute(Attribute("energy", 100, 50, .98))
-        self._addAttribute(Attribute("social", 100, 50, .9))
+        self._addAttribute(Attribute("social", 100, 50, .85))
         self._addAttribute(Attribute("culture", 100, 50, .9))
 
         self._addAction(Sleep())
