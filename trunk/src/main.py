@@ -1,20 +1,22 @@
 #TODO: Implement expected value based decisions.
 #TODO: Implement cross reference so if we add an object to a room, the object
 #      knows where it's.
-#TODO: Implement the concept of event.
 #TODO: Implement a "test" action that allows the actor to know the object.
 #TODO: Get rid of introspection?
 #TODO: Implement multiple ticks actions.
 #TODO: Implement the rule based system for actors.
 #TODO: Implement the GRID object for rooms.
 #TODO: Implement TAGS for motivation
-#TODO: Implement Facts concept (something that trigers methods like actor.die())
+#TODO: Implement Events concept (something that trigers methods like actor.die())
 
 # This is a sandbox implementation, please avoid asking about comments. :)
 
+# Imports the library content
 from peoplesim.actions import *
 from peoplesim.actors import *
+from peoplesim.buildings import *
 from peoplesim.common import *
+from peoplesim.events import *
 from peoplesim.objects import *
 from peoplesim.rooms import *
 
@@ -33,7 +35,6 @@ if __name__ == "__main__":
     """
 
     Bob = Actor("Bob")
-    Bob.introspection = 2
 
     Alice = Actor("Alice")
     Phone = Phone()
