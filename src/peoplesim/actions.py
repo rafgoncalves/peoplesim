@@ -33,14 +33,14 @@ class Sleep(Action):
     def getEffects(self):
         return {
                 "energy": normalvariate(10,2),
-                "social": normalvariate(-5,2),
+                "social": normalvariate(-2,1),
                 "culture": normalvariate(2,1)
                }
 
 class CallFriend(Action):
     def getEffects(self):
         return {
-                "energy": normalvariate(-5,1),
+                "energy": normalvariate(-1,1),
                 "social": normalvariate(12,2),
                 "culture": normalvariate(4,1)
                }
@@ -48,7 +48,7 @@ class CallFriend(Action):
 class Study(Action):
     def getEffects(self):
         return {
-                "energy": normalvariate(-10,3),
+                "energy": normalvariate(-2,3),
                 "social": normalvariate(5,5),
-                "culture": normalvariate(15,5)
+                "culture": normalvariate(10,5)
                }
