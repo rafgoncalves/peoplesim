@@ -41,12 +41,12 @@ if __name__ == "__main__":
     Lounge.addObject(Phone)
     Lounge.addObject(ClassBook)
 
-    for tick in range(0,1000):
-        print("------------------")
-        print(''.join(("ROUND #: ", str(tick))));
-        Bob.printStatus()
+    for tick in range(0,100000):
+        #print("------------------")
+        #print(''.join(("ROUND #: ", str(tick))));
+        
         Bob.update()
+        Alice.update()
 
-        #Alice.printStatus()
-        #Alice.update()
-
+    Bob.printStatus()
+    Alice.printStatus()
