@@ -5,8 +5,11 @@ class ActionQueue(deque):
         string = ""
         for action in self:
             string = ''.join((string, action.name, " > "))
-
         return string[:len(string)-2]
+
+    def append(self, action):
+        for i in range(0, action.length):
+            super().append(action)
 
 class Attribute:
     def __init__(self, name, max, value, decr):

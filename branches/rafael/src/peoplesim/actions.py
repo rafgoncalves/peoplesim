@@ -3,6 +3,7 @@ from random import normalvariate
 class Action:
     def __init__(self):
         self.name = self.__class__.__name__
+        self.length = 1
 
     def getEffects(self):
         return {}
@@ -25,6 +26,10 @@ class Action:
         return predictor
 
 class Sleep(Action):
+    def __init__(self):
+        super().__init__()
+        self.length = 5
+
     def getEffects(self):
         return {
                 "energy": normalvariate(10,2),

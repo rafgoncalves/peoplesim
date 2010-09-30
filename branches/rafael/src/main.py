@@ -2,12 +2,12 @@
 #TODO: Implement cross reference so if we add an object to a room, the object
 #      knows where it's.
 #TODO: Implement a "test" action that allows the actor to know the object.
-#TODO: Get rid of introspection?
-#TODO: Implement multiple ticks actions.
+#TODO: Implement multiple ticks actions. (Partialy done)
 #TODO: Implement the rule based system for actors.
 #TODO: Implement the GRID object for rooms.
 #TODO: Implement TAGS for motivation
 #TODO: Implement Events concept (something that trigers methods like actor.die())
+#TODO: Reimplement the motivation function. It's currently wrong for length > 1.
 
 # This is a sandbox implementation, please avoid asking about comments. :)
 
