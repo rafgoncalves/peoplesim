@@ -6,7 +6,7 @@ Just a copy-and-paste of the output from main.py.
 
 
 = Details =
-
+{{{
 ------------------
 ROUND #: 0
 ------------------
@@ -457,3 +457,4 @@ Actor: Alice
  - Room: Lounge
  - Action: Lounge.Phone.CallFriend
  - Queue: <Empty>
+}}}
