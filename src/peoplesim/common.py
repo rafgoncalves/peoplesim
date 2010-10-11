@@ -7,14 +7,30 @@ class ActionQueue(deque):
     Public methods:
     human_readable(): Returns a human-readable string for the queue.
     """
-    def humanReadable(self):
-        string = ""
-        for action in self:
-            string = ''.join((string, action.name, " > "))
-        return string[:len(string)-2]
+    def __init__(self):
+        super().__init__()
+        self._tickCounter = 0
+        self._current = None
 
-    def append(self, action):
-        super().extend(list(action for i in range(0, action.length)))
+    def humanReadable(self):
+        actions = [self._current.name
+                   for i in range(self._current.length - self._tickCounter)]
+        
+        actions.extend([action.name for action in self
+                                    for i in range(action.length)])
+
+        string = ' > '.join(actions)
+        return string
+
+    def popleft(self):
+        if(self._current != None and self._tickCounter < self._current.length):
+            self._tickCounter += 1;
+        else:
+            self._tickCounter = 0;
+            self._current = super().popleft()
+
+        return self._current
+
 
 class Attribute:
     def __init__(self, name, max, value, decr):
@@ -38,5 +54,6 @@ class Element:
     def _addAction(self, action):
         if action.name not in self.actions:
             self.actions[action.name] = action;
+            action.element = self
         else:
             raise NameError(''.join(("The action ", action.name, " is already set.")))
