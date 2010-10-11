@@ -63,6 +63,7 @@ class Actor(Element):
         fitness = None
         actions = self._listPossibleActions()
 
+        # Ok, I know it's not pythonic yet...
         for action in actions:
             current_fit = self._motivationFunction(action)
 
@@ -80,7 +81,7 @@ class Actor(Element):
         sources = [self]
         if self.room is not None:
             sources.append(self.room)
-            sources += list(self.room.objects[k] for k in self.room.objects.keys())
+            sources += [self.room.objects[k] for k in self.room.objects.keys()]
 
         # Note that they are not currently lists, we deal with that at the end.
         for source in sources:
@@ -96,13 +97,12 @@ class Actor(Element):
         personalites.
         """
         fit = 0;
-        predictor = action.predict(self)
         n_times = action.length
         max = self._attributesMax()
 
         for i in range(0,n_times):
             for k in max:
-                k_fit = predictor[k] - max[k]
+                k_fit = action.predict(self)[k] - max[k]
                 fit += copysign(pow(k_fit,2),k_fit)
 
         return fit/n_times
@@ -160,9 +160,10 @@ class Actor(Element):
         print("Actor: %s" % self.name)
         for attribute in self.attributes.values():
             print(" + %s" % attribute.humanReadable())
+        print(" - Room: %s" % self.room.name)
 
         if self._current_action is not None:
-            print(" - Action: %s" % self._current_action.name)
+            print(" - Action: %s" % self._current_action.humanReadable())
 
         if queue:
             if len(self._action_queue) > 0:

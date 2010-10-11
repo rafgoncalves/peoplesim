@@ -4,6 +4,7 @@ class Action:
     def __init__(self):
         self.name = self.__class__.__name__
         self.length = 1
+        self.element = None
 
     def getEffects(self):
         return {}
@@ -24,6 +25,14 @@ class Action:
             if attr in effects:
                 predictor[attr] += effects[attr]
         return predictor
+
+    def humanReadable(self):
+        param = (
+                 self.element.room.name,
+                 self.element.name,
+                 self.name
+                 )
+        return '.'.join(param);
 
 class Sleep(Action):
     def __init__(self):
