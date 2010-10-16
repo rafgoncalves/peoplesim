@@ -2,7 +2,7 @@ from peoplesim.common import *
 
 class Room(Element):
     def __init__(self, name):
-        super().__init__(name)
+        super(Room, self).__init__(name)
         self.room = self
         self.actors = {}
         self.objects = {}

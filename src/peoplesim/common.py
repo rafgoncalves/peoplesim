@@ -8,7 +8,7 @@ class ActionQueue(deque):
     human_readable(): Returns a human-readable string for the queue.
     """
     def __init__(self):
-        super().__init__()
+        super(ActionQueue, self).__init__()
         self._tickCounter = 0
         self._current = None
 
@@ -27,12 +27,12 @@ class ActionQueue(deque):
             self._tickCounter += 1;
         else:
             self._tickCounter = 0;
-            self._current = super().popleft()
+            self._current = super(ActionQueue, self).popleft()
 
         return self._current
 
 
-class Attribute:
+class Attribute(object):
     def __init__(self, name, max, value, decr):
         self.name = name
         self.max = max
@@ -45,7 +45,7 @@ class Attribute:
     def humanReadable(self):
         return ''.join((self.name,": ", str(self.value)));
 
-class Element:
+class Element(object):
     def __init__(self, name):
         self.actions = {}
         self.room = None

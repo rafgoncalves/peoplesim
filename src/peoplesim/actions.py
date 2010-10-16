@@ -1,6 +1,6 @@
 from random import normalvariate
 
-class Action:
+class Action(object):
     def __init__(self):
         self.name = self.__class__.__name__
         self.length = 1
@@ -42,7 +42,7 @@ class Action:
 
 class Sleep(Action):
     def __init__(self):
-        super().__init__()
+        super(Sleep, self).__init__()
         self.length = 5
 
     def getEffects(self):
