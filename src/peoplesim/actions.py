@@ -10,12 +10,7 @@ class Action:
         return {}
 
     def execute(self, actor):
-        effects = self.getEffects()
-        for e in self.getEffects():
-            if e in actor.attributes:
-                actor.attributes[e].value += effects[e]
-            else:
-                raise NameError(''.join(("The attribute ", e, " doesn't exist.")))
+        self._applyEffects(actor);
 
     def predict(self, actor):
         predictor = {}
@@ -33,6 +28,17 @@ class Action:
                  self.name
                  )
         return '.'.join(param);
+    
+    def _applyEffects(self, actor):
+        effects = self.getEffects()
+        for e in self.getEffects():
+            if e in actor.attributes:
+                actor.attributes[e].value += effects[e]
+            else:
+                raise NameError(''.join(("The attribute ", e, " doesn't exist.")))
+
+    def _enqueueEvent(self, event):
+        pass
 
 class Sleep(Action):
     def __init__(self):

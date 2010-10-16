@@ -101,8 +101,9 @@ class Actor(Element):
         max = self._attributesMax()
 
         for i in range(0,n_times):
+            predict = action.predict(self)
             for k in max:
-                k_fit = action.predict(self)[k] - max[k]
+                k_fit = predict[k] - max[k]
                 fit += copysign(pow(k_fit,2),k_fit)
 
         return fit/n_times
