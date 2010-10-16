@@ -33,7 +33,7 @@ class Actor(Element):
     """
     def __init__(self, name):
         """Class constructor. Ensures everthing gets initialized."""
-        super().__init__(name)
+        super(Actor, self).__init__(name)
         self.attributes = {}
         self._setDefault()
         self._action_queue = ActionQueue()
