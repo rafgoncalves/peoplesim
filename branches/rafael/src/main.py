@@ -1,6 +1,4 @@
-#TODO: Implement cross reference so if we add an object to a room, the object
-#      knows where it's.
-#TODO: Implement multiple ticks actions. (Partialy done)
+#TODO: Implement multiple ticks actions. (Partialy++ done)
 #TODO: Implement the GRID object for rooms.
 #TODO: Implement Events concept (something that trigers methods like actor.die())
 
@@ -41,7 +39,7 @@ if __name__ == "__main__":
     Lounge.addObject(Phone)
     Lounge.addObject(ClassBook)
 
-    for tick in range(0,100):
+    for tick in range(0,2500):
         print("------------------")
         print(''.join(("ROUND #: ", str(tick))));
         Bob.update()
