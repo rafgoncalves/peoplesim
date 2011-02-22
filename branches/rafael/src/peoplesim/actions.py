@@ -10,7 +10,7 @@ class Action(object):
         return {}
 
     def execute(self, actor):
-        self._applyEffects(actor);
+        self._applyEffects(actor)
 
     def predict(self, actor):
         predictor = {}
